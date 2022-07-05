@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import './GlobalStyles.css';
 import jsonData from './data.json';// assert  {type:json };
 import { useState } from 'react';

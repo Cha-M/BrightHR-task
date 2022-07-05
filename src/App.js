@@ -9,7 +9,7 @@ const App = () => {
     //State to use for whether folder is expanded.
     const [expand, setExpand] = useState(false);
     //Keys of object stored in state
-    const [keyList, setKeyList] = useState(Object.keys(item));
+    const [keyList] = useState(Object.keys(item));
 
     const expander = () =>
     {
@@ -97,7 +97,7 @@ const App = () => {
     }
   }
 
-  //The array generated from the JSON data 
+  //The array generated from the JSON data.
   const [dataArray, setDataArray] = useState(Object.values(jsonData));
   
   //Three string states to use to search and filter the array.
@@ -106,6 +106,7 @@ const App = () => {
   const [sortingOption, setSortingOption] = useState("name");
   
   const ItemList = () => {
+    //Used to display all data objects from the JSON.
     return (
       <div>
         {
@@ -118,7 +119,10 @@ const App = () => {
   }
 
   const stringSearch = () => {
+    //Define the data array based on the JSON/
     setDataArray(Object.values(jsonData));
+
+    //Only take items with the chosen property's value equal to the text search.
     setDataArray(
       dataArray.map(
           (item) => {
@@ -126,8 +130,6 @@ const App = () => {
           }
         )
         )
-    // console.log(dataArray);
-    // console.log(dataKey, textSearch);
   }
 
   const sortList = (sortOption) => {
@@ -136,6 +138,7 @@ const App = () => {
     
     if (sortOption === "added")
     {
+      //Sort by date parsed.
       sortArray = sortArray.sort(
         (a, b) => Date.parse(a[sortOption]) < Date.parse(b[sortOption]) ? -1 : 1
       );
